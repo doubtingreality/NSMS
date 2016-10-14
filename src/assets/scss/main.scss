@@ -1,0 +1,163 @@
+@import "normalize";
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .title {
+    z-index: 50;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 1rem;
+    font-size: 1rem;
+    line-height: 3rem;
+    font-weight: bold;
+    color: #00a0ff;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.2);
+  }
+
+  section {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3rem);
+    border: 0;
+    background-size: cover;
+
+    &.is-loading:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -1rem;
+      margin-left: -1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #00a0ff;
+      animation: bubble 1s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+
+
+      .client {
+        transition: all 300ms;
+
+        .body {
+          fill: #4ea2d4;
+          transition: all 300ms;
+        }
+
+        &.positive .body {
+          fill: #4ed4a2;
+        }
+
+        &.negative .body {
+          fill: #d44e62;
+        }
+
+        .eye {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 10px;
+          background: black;
+        }
+      }
+
+    }
+  }
+}
+
+.log-window {
+  position: fixed;
+  left: 1rem;
+	bottom: 0;
+  width: calc(100% - 2rem);
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+	padding: .5rem;
+  box-sizing: border-box;
+
+	background: rgba(0,0,0,.75);
+  font-size: .75rem;
+  transition: transform .3s;
+
+  .log-window__log {
+    display: block;
+    width: 100%;
+    height: calc(3em + .5rem);
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    resize: none;
+
+    font-size: .75rem;
+    font-family: monospace;
+    line-height: 1em;
+    color: #ddd;
+    background: transparent;
+  }
+
+  .log-window__close-button {
+    z-index: 100;
+    position: absolute;
+    display: inline-block;
+    top: .25rem;
+    right: .25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    font-family: monospace;
+    font-size: .7rem;
+    text-align: center;
+    line-height: 1rem;
+    color: #ddd;
+    cursor: pointer;
+    //background-color: rgba(255,255,255,.2);
+
+    &:hover {
+      background-color: rgba(255,255,255,.2);
+    }
+  }
+
+  &.is-closed {
+    transform: translate(0, 4rem);
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(.2);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    transform: scale(3);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
